@@ -1,0 +1,231 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fce4ec; /* Light pink background */
+  color: #333;
+  line-height: 1.6; /* Line spacing for better readability */
+}
+
+/* Header */
+.header {
+  background-color: #e91e63; /* Pink background */
+  color: white;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+nav ul li {
+  margin: 0 1.5rem;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+nav ul li a:hover {
+  color: #ff80ab; /* Light pink on hover */
+}
+
+/* About Section */
+.about-section {
+  padding: 4rem 2rem;
+  background-color: white;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.about-section h1 {
+  color: #e91e63; /* Pink color for titles */
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.about-section h2 {
+  color: #e91e63;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-section p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Sections for Certifications, Projects, Skills */
+.certifications-section, .projects-section, .skills-section {
+  padding: 3rem 2rem;
+  background-color: white;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.certifications-section h2,
+.projects-section h2,
+.skills-section h2 {
+  color: #e91e63; /* Pink headers */
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.certifications-section p,
+.projects-section p,
+.skills-section p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Line spacing between text */
+p, ul {
+  line-height: 1.8;
+}
+
+/* Home Section */
+.home-section {
+  padding: 4rem 2rem;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+}
+
+.home-section h1 {
+  color: #e91e63;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.home-section h2 {
+  color: #e91e63;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.home-section p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Contact Section */
+.contact {
+  padding: 4rem 2rem;
+  background-color: white;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+}
+
+.contact h1 {
+  color: #e91e63;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.contact-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contact-links ul li {
+  margin: 1rem 0;
+}
+
+.contact-links a {
+  font-size: 1.2rem;
+  color: #e91e63;
+  text-decoration: none;
+}
+
+.contact-links a:hover {
+  color: #c2185b; /* Darker pink for hover effect */
+}
+
+/* Projects Section */
+.projects-section {
+  background-color: #fafafa;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.projects-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #e91e63;
+}
+
+/* Container for holding project blocks */
+.projects-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Each project container */
+.project-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 48%; /* Two containers */
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect */
+.project-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  background-color: #fbb6d0; /* Baby pink color */
+}
+
+.project-container h3 {
+  font-size: 1.8rem;
+  color: #e91e63;
+  margin-bottom: 1rem;
+}
+
+.project-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.project-container ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 1rem;
+  color: #777;
+}
+
+.project-container ul li {
+  margin: 0.5rem 0;
+}
