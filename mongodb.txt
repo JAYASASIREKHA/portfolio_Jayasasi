@@ -1,0 +1,215 @@
+
+
+Basic CRUD operation
+
+creation:
+
+-> show dbs
+-> use student
+
+Insertion:
+
+->db.info.insertOne({name:'athu',roll:22})
+->db.info.insertOne({name:'akshay',roll:11,age:19, details:{salary:1500400,role:'HR'}})
+-> db.info.insertMany([{name:'abi',roll:1,age:23},{name:'vasu',roll:42,age:24}])
+
+Display
+
+->db.info.find() // returns cursor object calls the following func
+->db.info.findOne() //Displays first entry
+-> db.sample.find().toArray()
+->db.sample.find().forEach((d)=>print('the data',d))
+
+Update
+
+->db.sample.updateOne({name:'Bieito Lorme'},{$set:{language:'Hindi'}})
+->db.info.updateOne({name:'akshay'},{$set:{'details.salary':2000}})
+->db.info.updateMany({name:'athu'},{$set:{age:2000}})
+->db.sample.updateMany({language:'Hindi'},{$set:{bio:'Hindi theriyadhu poda',id:'5G646V7E6TJW8X2M'}})
+-> db.info.updateOne({name:'athu',age:{$exists: true}},{$set:{roll:42}})
+->db.info.updateOne({_id:ObjectId('678f6529a8874a319c46b79b')},{$set:{roll:42}})
+
+Create collection
+
+->db.createCollection('bfs',{})
+{ ok: 1 }
+stu> db.createCollection('bfs1',)
+{ ok: 1 }
+stu> db.createCollection('bfs2')
+{ ok: 1 }
+=================================================================================================
+integrating mongo and js
+
+Create folder -> open cmd -> type code . // this will get u the vs code of that folder
+
+in terminal
+npm i --s express express-handlebars body-parser
+npm I -g nodemon
+
+1.Express
+
+	Purpose: Express is a fast , minimalist web framework for node.js . It provides tools to build web applications and apis
+
+Usage: 
+	To handle http requests and responses
+	to create routes for different endpoints(e.g., GET, POST, PUT,DELETE).
+To integerate middleware for processing requests.
+
+Example:
+===============================================================================================
+
+2.Express-handlebars
+
+	Purpose : This package is an Express.js template engine for rendering dynamic html pages using Handlebars syntax
+	Usage: Ro serve dynamic content by combing
+
+
+
+
+
+
+
+
+
+
+
+
+const express = require('express');
+const exhbs = require('express-handlebars');
+const app = express();
+
+app.engine('hbs', exhbs.engine({layoutsDir:'viewsfold/',defaultLayout:'maincopy',extname:'hbs',}));
+app.set ('view engine', 'hbs');
+app.set('views','viewsfold');
+
+//Routes
+app.get('/',(req, res)=> {
+    const msg ='Hello';
+    res.render ('maincopy',{msg});
+
+});
+
+//start the server
+app.listen(8000,()=>{
+    console.log('Listening on port 8000...');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> MONGO CRUD</title>
+
+    </head>
+    <body>
+        <h1> MongoDB CRUD Example</h1>
+        <p> {{msg}}</p>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+npm i mongodb (install mongodb driver)
+
+
+
+
+
+
+
+
+const express = require('express');
+const exhbs = require('express-handlebars');
+const app = express();
+const dbo= require('./db')
+
+app.engine('hbs', exhbs.engine({layoutsDir:'viewsfold/',defaultLayout:'maincopy',extname:'hbs',}));
+app.set ('view engine', 'hbs');
+app.set('views','viewsfold');
+
+//Routes
+app.get('/',async(req, res)=> {
+    let database =await dbo.getDatabase();
+    const collection = database.collection('emp');
+    const cursor = collection.find({});
+    let datas = await cursor.toArray()
+    const msg='heyy sinamika';
+    console.log('the data',datas);
+    res.render('maincopy',{msg,datas})
+
+});
+
+//start the server
+app.listen(8000,()=>{
+    console.log('Listening on port 8000...');
+});
+
+
+
+
+
+
+
+
+Insert data using forms
+const express = require('express');
+const exhbs = require('express-handlebars');
+const body = require('body-parser')
+const app = express();
+const dbo= require('./db')
+
+app.engine('hbs', exhbs.engine({layoutsDir:'viewsfold/',defaultLayout:'maincopy',extname:'hbs',}));
+app.set ('view engine', 'hbs');
+app.set('views','viewsfold');
+app.use(body.urlencoded({extended:true}))
+//Routes
+app.get('/',async(req, res)=> {
+    let database =await dbo.getDatabase();
+    const collection = database.collection('emp');
+    const cursor = collection.find({});
+    let datas = await cursor.toArray()
+    let msg = '';
+        if (req.query.status === '1') {
+            msg = 'Inserted Successfully';
+        }
+
+        console.log('The data:', datas);
+        res.render('maincopy', { datas, msg });
+    
+
+});
+app.post ('/empinfo',async (req, res)=>{
+    const database = await dbo.getDatabase();
+    const collection = database.collection('emp');
+    const employee = {empid: req.body.eid , empname : req.body.ename};
+    await collection.insertOne(employee);
+    res.redirect('/?status=1');
+
+
+})
+
+//start the server
+app.listen(8000,()=>{
+    console.log('Listening on port 8000...');
+});
